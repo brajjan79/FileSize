@@ -4,9 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -26,7 +23,7 @@ public class TestFileSize {
     private static final double ONE_TERABYTE_AS_YOTTA = 9.094947017729282E-13;
 
     @Test
-    public void TestGetFileSizeFromFile() throws Exception {
+    public void testGetFileSizeFromFile() throws Exception {
         final File file = Mockito.mock(File.class);
         Mockito.when(file.exists()).thenReturn(true);
         Mockito.when(file.isDirectory()).thenReturn(false);
@@ -45,13 +42,20 @@ public class TestFileSize {
     }
 
     @Test
-    public void TestGetFileSizeFromDirectory() throws Exception {
+    public void testGetFileSizeFromDirectory() throws Exception {
         final long bytes = 200000L;
         final long numberOfFiles = 16L;
         final File file = getMockedDirectoryWithSubDirs(bytes);
 
         final FileSize fileSize = new FileSize(file);
         assertEquals(bytes * numberOfFiles, fileSize.getBytes(), 0);
+    }
+
+    @Test(expected=FileNotFoundException.class)
+    public void testCreateFileSizeFileNotFound() throws Exception {
+        final File file = Mockito.mock(File.class);
+        Mockito.when(file.exists()).thenReturn(false);
+        new FileSize(file);
     }
 
     /**

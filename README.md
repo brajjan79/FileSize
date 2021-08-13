@@ -7,16 +7,16 @@
 FileSize is a small JAVA plugin that provides a fast and easy way to get the size of a file in the format that is needed.
 
 When sizing up a file you can convert the size to:
-* Bytes
-* KiloBytes
-* MegaBytes
-* GigaBytes
-* GigaBytes
-* TeraBytes
-* PetaBytes
-* ExaBytes
-* ZettaBytes
-* YottaBytes
+  * Bytes
+  * KiloBytes
+  * MegaBytes
+  * GigaBytes
+  * GigaBytes
+  * TeraBytes
+  * PetaBytes
+  * ExaBytes
+  * ZettaBytes
+  * YottaBytes
 
 ## Installation
 

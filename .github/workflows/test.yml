@@ -22,3 +22,9 @@ jobs:
           WHO_TO_TRUST: ${{ secrets.TEST_TOKEN }}
         if:  env.WHO_TO_TRUST == 'TrustNo1'
         run: echo "I know what the secret token is!"
+      - name: Step 3 - Echo out a GitHub Actions Secret to the logs
+        run: |
+          echo "The GitHub Action Secret will be masked:  "
+          echo ${{ secrets.OTHER_TOKEN }}
+          echo "Trick to echo GitHub Actions Secret:  "
+          echo ${{secrets.OTHER_TOKEN}} | sed 's/./& /g' 

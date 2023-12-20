@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.com/brajjan79/FileSize.svg?branch=main)](https://travis-ci.com/brajjan79/FileSize)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c866c4f4c44c4ea8bf539031c235a8a3)](https://www.codacy.com/gh/brajjan79/FileSize/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=brajjan79/FileSize&amp;utm_campaign=Badge_Grade)
-[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/c866c4f4c44c4ea8bf539031c235a8a3)](https://www.codacy.com/gh/brajjan79/FileSize/dashboard?utm_source=github.com&utm_medium=referral&utm_content=brajjan79/FileSize&utm_campaign=Badge_Coverage)
+[![Java CI with Maven](https://github.com/brajjan79/FileSize/actions/workflows/maven.yml/badge.svg)](https://github.com/brajjan79/FileSize/actions/workflows/maven.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c866c4f4c44c4ea8bf539031c235a8a3)](https://app.codacy.com/gh/brajjan79/FileSize/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/c866c4f4c44c4ea8bf539031c235a8a3)](https://app.codacy.com/gh/brajjan79/FileSize/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 [![JitPack](https://jitpack.io/v/brajjan79/FileSize.svg)](https://jitpack.io/#brajjan79/FileSize)
 
 # FileSize
@@ -42,8 +42,11 @@ double bytes = fileSize.getBytes();
 double KiloBytes = fileSize.getKiloBytes();
 // This goes on up to YotaBytes
 
-// Static way
+// Static way Deprecated
 double bytes = FileSize.size(someFile).getBytes();
 double KiloBytes = FileSize.size(someFile).getKiloBytes();
+
+double bytes = FileSize.getBytes(someFile);
+double KiloBytes = FileSize.getKiloBytes(someFile);
 // This goes on up to YotaBytes
 ```

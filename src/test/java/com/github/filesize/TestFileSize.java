@@ -60,6 +60,24 @@ public class TestFileSize {
     }
 
     @Test
+    public void testGetFileSizeFromFileStaticNew() throws Exception {
+        final File file = Mockito.mock(File.class);
+        Mockito.when(file.exists()).thenReturn(true);
+        Mockito.when(file.isDirectory()).thenReturn(false);
+        Mockito.when(file.length()).thenReturn(ONE_TERABYTE_IN_BYTES);
+
+        assertEquals(ONE_TERABYTE_AS_BYTE, FileSize.getBytes(file), 0);
+        assertEquals(ONE_TERABYTE_AS_KB, FileSize.getKiloBytes(file), 0);
+        assertEquals(ONE_TERABYTE_AS_MB, FileSize.getMegaBytes(file), 0);
+        assertEquals(ONE_TERABYTE_AS_GB, FileSize.getGigaBytes(file), 0);
+        assertEquals(ONE_TERABYTE, FileSize.getTeraBytes(file), 0);
+        assertEquals(ONE_TERABYTE_AS_PETA, FileSize.getPetaBytes(file), 0);
+        assertEquals(ONE_TERABYTE_AS_EXA, FileSize.getExaBytes(file), 0);
+        assertEquals(ONE_TERABYTE_AS_ZETTA, FileSize.getZettaBytes(file), 0);
+        assertEquals(ONE_TERABYTE_AS_YOTTA, FileSize.getYottaBytes(file), 0);
+    }
+
+    @Test
     public void testGetFileSizeFromDirectory() throws Exception {
         final long bytes = 200000L;
         final long numberOfFiles = 16L;

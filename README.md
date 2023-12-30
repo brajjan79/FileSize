@@ -6,6 +6,8 @@
 # FileSize
 FileSize is a small JAVA plugin that provides a fast and easy way to get the size of a file in the format that is needed.
 
+Note if file is not found will return a 0.0 double value.
+
 When sizing up a file you can convert the size to:
 *   Bytes
 *   KiloBytes

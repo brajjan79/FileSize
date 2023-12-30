@@ -1,23 +1,18 @@
 package com.github.filesize;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 public class FileSize {
 
-    private final double bytes;
+    private File file;
 
     /**
      * Constructor for FileSize
      *
      * @param file
-     * @throws FileNotFoundException
      */
-    public FileSize(final File file) throws FileNotFoundException {
-        if (!file.exists()) {
-            throw new FileNotFoundException("File " + file.getAbsolutePath() + " does not exist.");
-        }
-        this.bytes = calculateBytes(file);
+    public FileSize(final File file) {
+        this.file = file;
     }
 
     /**
@@ -26,10 +21,9 @@ public class FileSize {
      *
      * @param file
      * @return FileSize
-     * @throws FileNotFoundException
      */
     @Deprecated
-    public static FileSize size (final File file) throws FileNotFoundException {
+    public static FileSize size(final File file) {
         final FileSize fileSize = new FileSize(file);
         return fileSize;
     }
@@ -40,16 +34,15 @@ public class FileSize {
      * @return
      */
     public double getBytes() {
-        return bytes;
+        return calculateBytes(this.file);
     }
 
     /**
      * Get file or content size in bytes
      *
      * @return
-     * @throws FileNotFoundException
      */
-    public static double getBytes(final File file) throws FileNotFoundException {
+    public static double getBytes(final File file) {
         return new FileSize(file).getBytes();
     }
 
@@ -66,9 +59,8 @@ public class FileSize {
      * Get file or content size in kilo bytes
      *
      * @return
-     * @throws FileNotFoundException
      */
-    public static double getKiloBytes(final File file) throws FileNotFoundException {
+    public static double getKiloBytes(final File file) {
         return new FileSize(file).getKiloBytes();
     }
 
@@ -85,9 +77,8 @@ public class FileSize {
      * Get file or content size in mega bytes
      *
      * @return
-     * @throws FileNotFoundException
      */
-    public static double getMegaBytes(final File file) throws FileNotFoundException {
+    public static double getMegaBytes(final File file) {
         return new FileSize(file).getMegaBytes();
     }
 
@@ -104,9 +95,8 @@ public class FileSize {
      * Get file or content size in giga bytes
      *
      * @return
-     * @throws FileNotFoundException
      */
-    public static double getGigaBytes(final File file) throws FileNotFoundException {
+    public static double getGigaBytes(final File file) {
         return new FileSize(file).getGigaBytes();
     }
 
@@ -123,9 +113,8 @@ public class FileSize {
      * Get file or content size in tera bytes
      *
      * @return
-     * @throws FileNotFoundException
      */
-    public static double getTeraBytes(final File file) throws FileNotFoundException {
+    public static double getTeraBytes(final File file) {
         return new FileSize(file).getTeraBytes();
     }
 
@@ -142,9 +131,8 @@ public class FileSize {
      * Get file or content size in bytes
      *
      * @return
-     * @throws FileNotFoundException
      */
-    public static double getPetaBytes(final File file) throws FileNotFoundException {
+    public static double getPetaBytes(final File file) {
         return new FileSize(file).getPetaBytes();
     }
 
@@ -161,9 +149,8 @@ public class FileSize {
      * Get file or content size in Exabytes
      *
      * @return
-     * @throws FileNotFoundException
      */
-    public static double getExaBytes(final File file) throws FileNotFoundException {
+    public static double getExaBytes(final File file) {
         return new FileSize(file).getExaBytes();
     }
 
@@ -180,9 +167,8 @@ public class FileSize {
      * Get file or content size in Zettabytes
      *
      * @return
-     * @throws FileNotFoundException
      */
-    public static double getZettaBytes(final File file) throws FileNotFoundException {
+    public static double getZettaBytes(final File file) {
         return new FileSize(file).getZettaBytes();
     }
 
@@ -199,13 +185,15 @@ public class FileSize {
      * Get file or content size in Yottabytes
      *
      * @return
-     * @throws FileNotFoundException
      */
-    public static double getYottaBytes(final File file) throws FileNotFoundException {
+    public static double getYottaBytes(final File file) {
         return new FileSize(file).getYottaBytes();
     }
 
     private double calculateBytes(final File file) {
+        if (!file.exists()) {
+            return 0.0;
+        }
         if (!file.isDirectory()) {
             return file.length();
         }

@@ -3,7 +3,6 @@ package com.github.filesize;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -85,13 +84,6 @@ public class TestFileSize {
 
         final FileSize fileSize = new FileSize(file);
         assertEquals(bytes * numberOfFiles, fileSize.getBytes(), 0);
-    }
-
-    @Test(expected=FileNotFoundException.class)
-    public void testCreateFileSizeFileNotFound() throws Exception {
-        final File file = Mockito.mock(File.class);
-        Mockito.when(file.exists()).thenReturn(false);
-        new FileSize(file);
     }
 
     /**

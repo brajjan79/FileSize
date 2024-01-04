@@ -54,5 +54,4 @@ public class DataSizeFormatterTest {
     public void testFormatBytesLargeNumber() {
         assertEquals("8881.7842 PB", DataSizeFormatter.formatBytes(10000000000000000000.0, 8, 4));
     }
-
 }

@@ -2,8 +2,18 @@ package com.github.filesize;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class DataSizeFormatterTest {
+
+    @Test
+    public void testInitForFullCoverage() {
+        try {
+            new DataSizeFormatter();
+        } catch (final Exception e) {
+            fail("Could not initialize class");
+        }
+    }
 
     @Test
     public void testFormatBytesBytes() {
@@ -26,12 +36,23 @@ public class DataSizeFormatterTest {
     }
 
     @Test
+    public void testFormatBytesTerrabytes() {
+        assertEquals("1.00 TB", DataSizeFormatter.formatBytes(1024L * 1024L * 1024L * 1024L));
+    }
+
+    @Test
+    public void testFormatBytesPetabytes() {
+        assertEquals("1.00 PB", DataSizeFormatter.formatBytes(1024L * 1024L * 1024L * 1024L * 1024L));
+    }
+
+    @Test
     public void testFormatBytesWithCustomDecimalPlaces() {
-        assertEquals("1.5 MB", DataSizeFormatter.formatBytes(1572864, 1)); // 1.5 MB with 1 decimal place
+        assertEquals("1.5 MB", DataSizeFormatter.formatBytes(1572864, 1));
     }
 
     @Test
     public void testFormatBytesLargeNumber() {
-        assertEquals("931.32 GB", DataSizeFormatter.formatBytes(1000000000000L)); // 1 TB in bytes
+        assertEquals("8881.78 PB", DataSizeFormatter.formatBytes(10000000000000000000.0));
     }
+
 }

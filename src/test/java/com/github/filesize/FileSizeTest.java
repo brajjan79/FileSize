@@ -22,6 +22,11 @@ public class FileSizeTest {
     private static final double ONE_TERABYTE_AS_YOTTA = 9.094947017729282E-13;
 
     @Test
+    public void testGetFileSizeFromNoneExistingFile() throws Exception {
+        assertEquals(0.0, FileSize.getBytes(new File("this/does/not/exist")), 0);
+    }
+
+    @Test
     public void testGetFileSizeFromFile() throws Exception {
         final File file = Mockito.mock(File.class);
         Mockito.when(file.exists()).thenReturn(true);

@@ -7,7 +7,7 @@ import java.io.File;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class TestFileSize {
+public class FileSizeTest {
 
     private static final long ONE_TERABYTE_IN_BYTES = 1099511627776L;
 

@@ -17,42 +17,41 @@ public class DataSizeFormatterTest {
 
     @Test
     public void testFormatBytesBytes() {
-        assertEquals("512.00 b", DataSizeFormatter.formatBytes(512));
+        assertEquals("  512 b", DataSizeFormatter.formatBytes(512));
     }
 
     @Test
     public void testFormatBytesKilobytes() {
-        assertEquals("1.00 KB", DataSizeFormatter.formatBytes(1024));
+        assertEquals("    1 KB", DataSizeFormatter.formatBytes(1024));
     }
 
     @Test
     public void testFormatBytesMegabytes() {
-        assertEquals("1.00 MB", DataSizeFormatter.formatBytes(1024 * 1024));
+        assertEquals(" 1.00 MB", DataSizeFormatter.formatBytes(1024 * 1024));
     }
 
     @Test
     public void testFormatBytesGigabytes() {
-        assertEquals("1.00 GB", DataSizeFormatter.formatBytes(1024L * 1024L * 1024L));
+        assertEquals(" 1.00 GB", DataSizeFormatter.formatBytes(1024L * 1024L * 1024L));
     }
 
     @Test
     public void testFormatBytesTerrabytes() {
-        assertEquals("1.00 TB", DataSizeFormatter.formatBytes(1024L * 1024L * 1024L * 1024L));
+        assertEquals(" 1.00 TB", DataSizeFormatter.formatBytes(1024L * 1024L * 1024L * 1024L));
     }
 
     @Test
     public void testFormatBytesPetabytes() {
-        assertEquals("1.00 PB", DataSizeFormatter.formatBytes(1024L * 1024L * 1024L * 1024L * 1024L));
+        assertEquals(" 1.00 PB", DataSizeFormatter.formatBytes(1024L * 1024L * 1024L * 1024L * 1024L));
     }
 
     @Test
     public void testFormatBytesWithCustomDecimalPlaces() {
-        assertEquals("1.5 MB", DataSizeFormatter.formatBytes(1572864, 1));
+        assertEquals("    1.50 MB", DataSizeFormatter.formatBytes(1572864, 7, 2));
     }
 
     @Test
     public void testFormatBytesLargeNumber() {
-        assertEquals("8881.78 PB", DataSizeFormatter.formatBytes(10000000000000000000.0));
+        assertEquals("8881.7842 PB", DataSizeFormatter.formatBytes(10000000000000000000.0, 8, 4));
     }
-
 }

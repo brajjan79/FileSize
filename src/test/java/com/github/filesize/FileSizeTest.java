@@ -7,7 +7,7 @@ import java.io.File;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class TestFileSize {
+public class FileSizeTest {
 
     private static final long ONE_TERABYTE_IN_BYTES = 1099511627776L;
 
@@ -20,6 +20,11 @@ public class TestFileSize {
     private static final double ONE_TERABYTE_AS_EXA = 9.5367431640625E-7;
     private static final double ONE_TERABYTE_AS_ZETTA = 9.313225746154785E-10;
     private static final double ONE_TERABYTE_AS_YOTTA = 9.094947017729282E-13;
+
+    @Test
+    public void testGetFileSizeFromNoneExistingFile() throws Exception {
+        assertEquals(0.0, FileSize.getBytes(new File("this/does/not/exist")), 0);
+    }
 
     @Test
     public void testGetFileSizeFromFile() throws Exception {

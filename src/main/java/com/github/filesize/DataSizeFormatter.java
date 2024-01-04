@@ -31,12 +31,13 @@ public class DataSizeFormatter {
         final String[] units = { "b", "KB", "MB", "GB", "TB", "PB" };
         int unitIndex = 0;
 
-        while (bytes >= 1024 && unitIndex < units.length - 1) {
-            bytes /= 1024;
+        double transformedBytes = bytes;
+        while (transformedBytes >= 1024 && unitIndex < units.length - 1) {
+            transformedBytes /= 1024;
             unitIndex++;
         }
 
         final String formatSpecifier = "%." + decimalPlaces + "f %s";
-        return String.format(Locale.US, formatSpecifier, bytes, units[unitIndex]);
+        return String.format(Locale.US, formatSpecifier, transformedBytes, units[unitIndex]);
     }
 }
